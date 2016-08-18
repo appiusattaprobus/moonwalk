@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script>
+        window.addEventListener("load", function load(event) {
+            addPlayer({
+                id: 'player',
+                type: "application/x-shockwave-flash",
+                data: "/assets/player.swf",
+            }, {
+                wmode: "opaque",
+                allowFullScreen: "true",
+                flashvars: "src={{ item.manifest }}&amp;emptyBufferTime=4&amp;expandedBufferTime=30&amp;controlBarAutoHideTimeout=8&amp;"
+            });
+        }, false);
+
+        function addPlayer(attrs, params) {
+            var i, html, div, attr = attrs || {},
+                param = params || {};
+            html = '<object';
+            for (i in attr) {
+                html += ' ' + i + '="' + attr[i] + '"';
+            }
+            html += '>';
+            for (i in param) {
+                html += '<param name="' + i + '" value="' + param[i] + '" />';
+            }
+            html += '</object>';
+            createElem('player-wrap', 'div', html);
+        }
+
+        function createElem(id, type, html) {
+            var elem = document.createElement(type);
+            elem.setAttribute('id', id);
+            elem.innerHTML = html;
+            document.body.appendChild(elem);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

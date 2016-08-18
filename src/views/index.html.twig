@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+	<div class="wrapper">
+		{% if list is not empty %}
+			<ul class="gallery">
+				{% for key,item in list %}
+					<li>
+						<a href="/watch/{{ key }}" title="{{ item.name }}">
+							<img src="{{ item.image }}" alt="{{ item.name }}" />
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</body>
+</html>
